@@ -1,0 +1,492 @@
+@use "foundation/variables";
+@use "sass:color";
+@use "foundation/reset";
+@use "foundation/common";
+
+
+
+// ヘッダー部分
+// ヘッダー・メインヘッダー部分
+header {
+  padding: 2rem 0;
+  width: 100vw;
+  height: variables.$header-height;
+  // position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: #fff;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: max-content;
+  box-shadow: 0 2px 2px variables.$color-border;
+  padding-bottom: 1rem;
+}
+
+.header-main__left {
+  display: flex;
+  // align-items: center;
+  .hamburger {
+    text-align: center;
+    position: relative;
+    span {
+      position: absolute;
+      height: .8px;
+      width: 2rem;
+      background-color: #333;
+      &:nth-of-type(1) {
+        top: 10%;
+      }
+      &:nth-of-type(2) {
+        top: 25%;
+      }
+      &:nth-of-type(3) {
+        top: 40%;
+      }
+    }
+  }
+
+  .brand {
+    margin-left: 5rem;
+  }
+}
+.header-main__right {
+  display: flex;
+
+  .shopping {
+    margin-left: 3.5rem;
+  }
+}
+
+// ヘッダー・サブヘッダー部分
+.header-sub {
+  padding: 1rem 8rem 3rem;
+  display: flex;
+  justify-content: center;
+  &__container {
+    width: 40rem;
+  }
+  &__input {
+    position: relative;
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 3rem;
+    input {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: color.adjust(variables.$color-text-main, $lightness: 20%);
+      border: 1px solid color.adjust(variables.$color-border, $lightness: -20%);
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: .8rem;
+      left: .8rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      border: 1.5px solid #333;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 1.9rem;
+      left: 1.7rem;
+      width: .4rem;
+      height: .1rem;
+      background: #333;
+      transform: rotate(45deg);
+    }
+  }
+  &__logo {
+    text-align: center;
+
+  }
+}
+
+// メイン
+main {
+  width: 100%;
+  height: 100%;
+}
+// メイン・メインカテゴリー
+.main-category {
+
+  &__nav {
+    background-color: variables.$bg-color-gray;
+    height: 3.5rem;
+    width: 100%;
+  }
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.5rem;
+    width: 70rem;
+    margin: 0 auto;
+    // gap: 1rem;
+    font-size: 3.5rem;
+  }
+  &__item {
+    height: 3.5rem;
+    width: 100%;
+    // flex: 1;
+    text-align: center;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: inherit;
+    }
+  }
+}
+
+// メイン・メインカテゴリー・ビジュアル
+.mainvisual {
+  padding: 2rem 0 3rem;
+
+  &__window {
+    width: 100vw;
+    overflow-x: auto;
+
+    // スクロールバー非表示
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__container {
+    width: max-content;
+    transform: translate(-45rem);
+    transition: all 0.3s ease;
+  }
+
+  &__list {
+    display: flex;
+    gap: 3rem;
+  }
+
+  &__item {
+    height: 45rem;
+    img {
+      height: 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 3rem;
+    width: 100vw;
+    // background-color: variables.$bg-color-gray;
+  }
+
+  &__btn {
+    width: .6rem;
+    height: .6rem;
+    padding: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    border: .1rem solid color.adjust(variables.$color-border, $lightness: -30%);
+    &.active {
+      background-color: color.adjust(variables.$color-border, $lightness: -20%);
+    }
+  }
+
+}
+.product-card {
+    width: 100%;
+    height: 25rem;
+    a {
+      display: block;
+    }
+  &__desc {
+    height: 100%;
+  }
+  &__brand {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  &__name {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  &__price {
+    font-size: .9rem;
+  }
+
+}
+
+// メイン・ピックアップ部分
+.pickup {
+  padding: 4rem 0;
+  width: 100vw;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+
+  &__container {
+    margin-top: 5rem;
+    width: 90rem;
+  }
+  &__list {
+    display: flex;
+    gap: .2rem;
+    a img {
+      object-fit: cover;
+      width: 18rem;
+    }
+  }
+
+
+  &__more {
+    margin: 8rem auto 3rem;
+  }
+  &__motebutton {
+    padding: 1.2rem 10rem;
+    background-color: transparent;
+    border: 1px solid color.adjust(variables.$color-border, $lightness: -10%);
+  }
+
+}
+
+// メイン・新着アイテム部分
+.new-arrival {
+  padding: 5rem 0;
+
+  &__tabs {
+    margin: 3rem auto 2rem;
+    width: 100%;
+
+  }
+  &__tab-list {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 2px solid variables.$color-border;
+  }
+
+  &__tab-item {
+    height: 3rem;
+    width: 12rem;
+    position: relative;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      font-weight: 300;
+      width: 100%;
+      height: 100%;
+    }
+
+    &--active {
+      a {
+        color: color.adjust(variables.$color-text-main, $lightness: 10%);
+        font-weight: bold;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1.2rem;
+        left: 0;
+        width: 100%;
+        height: .2rem;
+        background-color: color.adjust(variables.$color-border, $lightness: -50%);
+      }
+    }
+  }
+
+  &__brands {
+    margin: 3rem 0;
+    &-window {
+      width: 100%;
+      height: 4rem;
+    }
+    &-container {
+      width: max-content;
+    }
+    &-list {
+      display: flex;
+      gap: 2rem;
+      border-bottom: 2px solid variables.$color-border;
+    }
+    &-item {
+      height: 5rem;
+      width: 8rem;
+      position: relative;
+      a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        img {
+          object-fit: cover;
+        }
+      }
+
+      &:first-child {
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        a span {
+          display: block;
+          margin-top: 1rem;
+        }
+      }
+
+      &--active {
+        a {
+          color: color.adjust(variables.$color-text-main, $lightness: 10%);
+          font-weight: bold;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          padding-bottom: 2rem;
+          width: 100%;
+          height: 100%;
+          bottom: -2px;
+          border-bottom: 2px solid #333;
+        }
+      }
+    }
+
+
+
+    
+  }
+}
+
+
+
+
+// フッター
+.footer {
+  background-color: variables.$bg-color-gray;
+  width: 100vw;
+
+  &__category {
+    height: 10rem;
+    border-bottom: 1px solid gray;
+    nav {
+      height: 100%;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    padding-top: 1.2rem;
+
+    height: 100%;
+    font-size: 5.5rem;
+    text-transform: uppercase;
+    color: color.adjust(variables.$color-text-main, $lightness: 30%);
+  }
+
+  &__app {
+    height: 15rem;
+    border-bottom: 1px solid color.adjust(variables.$color-text-main, $lightness: 50%);
+    display: flex;
+    align-items: center;
+  }
+
+  &__appfield {
+    display: flex;
+    align-items: center;
+    margin: auto;
+
+    height: 7.5rem;
+    width: 40rem;
+    border: 1px solid variables.$color-border;
+    background-color: variables.$color-white;
+  }
+
+  &__applogo {
+    margin:  1.15rem 2rem;
+  }
+
+  &__apptext {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 70%;
+  }
+
+  &__apptitle {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  &__appdesc {
+    font-size: 1.2rem;
+  }
+  
+  &__menu {
+    height: 10rem;
+    width: 100%;
+    border-bottom: 1px solid color.adjust(variables.$color-text-main, $lightness: 50%);
+  }
+
+  &__menunav {
+    padding: 2rem 0;
+  }
+
+  &__menus {
+    display: flex;
+    justify-content: space-between;
+    gap: 6.5rem;
+  }
+
+  &__tradesafe {
+    width: 100%;
+    border-bottom: 1px solid color.adjust(variables.$color-text-main, $lightness: 50%);
+  }
+
+  &__tradecontent {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+
+  &__tradedesc {
+    font-size: 1.2rem;
+  }
+
+
+  &__end {
+    height: 20rem;
+    text-align: center;
+  }
+
+  &__endlogo {
+    margin: 4rem;
+  }
+
+  &__copywrite {
+    font-size: 1.3rem;
+    font-weight: 300;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "united",
+  "version": "1.0.0",
+  "description": "landing page for united arrows",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass src/styles/index.scss dist/styles/index.css",
+    "watch:css": "sass --watch src/styles/index.scss dist/styles/index.css"
+  },
+  "author": "peipei",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.99.0"
+  }
+}
