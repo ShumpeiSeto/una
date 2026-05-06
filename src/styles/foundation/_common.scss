@@ -1,0 +1,21 @@
+.section__title {
+    text-align: center;
+    &--main {
+      display: block;
+      font-size: 3rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+    &--sub {
+      display: block;
+      font-weight: 300;
+      font-size: 1.5rem;
+    }
+}
+
+.l-container-1300 {
+  width: 130rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}

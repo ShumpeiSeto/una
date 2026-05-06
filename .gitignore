@@ -1,0 +1,32 @@
+# 依存関係
+node_modules/
+
+# ビルド成果物
+dist/
+build/
+.cache/
+
+# 環境変数（APIキーなど秘密情報）
+.env
+.env.local
+.env.*.local
+
+# OSが自動生成するファイル
+.DS_Store        # Mac
+Thumbs.db        # Windows
+desktop.ini      # Windows
+
+# エディタ設定
+.vscode/
+.idea/
+*.suo
+*.swp
+
+# ログ
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Sass/SCSSのキャッシュ
+.sass-cache/
+*.css.map
