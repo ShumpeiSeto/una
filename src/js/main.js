@@ -11,7 +11,7 @@ let currentPosition = 1;
 
 const updatePosition = function() {
   const windowWidth = document.querySelector('.mainvisual__window').offsetWidth;
-  const itemWidth = document.querySelector('.mainvisual__item img').offsetWidth;
+  const itemWidth = document.querySelector('.mainvisual__item img').offsetWidth + 30;
 
   // const moveWidth = -(currentPosition) * itemWidth -(itemWidth/2 - windowWidth/2);
   const moveWidth = (currentPosition+1) * itemWidth - (itemWidth/2 + windowWidth/2);
@@ -55,3 +55,71 @@ newArrivalTab.addEventListener('click', (e) => {
   const targetTab = e.target.closest('li');
   targetTab.classList.add('new-arrival__tab-item--active');
 })
+
+// ブランド選択ボタン
+let currentBrandPosition = 0;
+const brandContainer = document.querySelector('.new-arrival__brands-container');
+const brandList = document.querySelector('.new-arrival__brands-list');
+const leftBtn = document.querySelector('.new-arrival__brands-btn--left');
+const rightBtn = document.querySelector('.new-arrival__brands-btn--right');
+
+if (rightBtn) {
+  rightBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // rightボタン一度押されると左ボタンを表示する
+    leftBtn.classList.remove('inactive-btn');
+    console.log(currentBrandPosition);
+    // 右端にいくとボタンを見えなくする
+    if (currentBrandPosition>=10) {
+      rightBtn.classList.add('inactive-btn');
+    }
+
+    // コンテナのアイテム数を計算する
+    const itemCount = document.querySelector('.new-arrival__brands-list').length;
+    currentBrandPosition++;
+    // gap分を追加したアイテム幅
+    const itemWidth = document.querySelector('.new-arrival__brands-item').offsetWidth + 20;
+    const moveWidth = itemWidth * currentBrandPosition;
+    brandContainer.style.transform = `translateX(-${moveWidth}px)`;
+  })
+}
+if (leftBtn) {
+  leftBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    console.log(currentBrandPosition);
+    // leftボタン一度押されると左ボタンを表示する
+    rightBtn.classList.remove('inactive-btn');
+
+    // 左端でボタンを見せなくする
+    if (currentBrandPosition<=1) {
+      leftBtn.classList.add('inactive-btn');
+    }
+
+    // コンテナのアイテム数を計算する
+    const itemCount = document.querySelector('.new-arrival__brands-list').length;
+    currentBrandPosition--;
+    // gap分を追加したアイテム幅
+    const itemWidth = document.querySelector('.new-arrival__brands-item').offsetWidth + 20;
+    const moveWidth = itemWidth * currentBrandPosition;
+    brandContainer.style.transform = `translateX(-${moveWidth}px)`;
+  })
+}
+
+if (brandList) {
+  brandList.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const targetLi = e.target.closest('li');
+    if (!targetLi) return;
+
+    // 該当するアイテムに下線を入れる
+    [...brandList.children].forEach(item => item.classList.remove('new-arrival__brands-item--active'));
+    targetLi.classList.add('new-arrival__brands-item--active');
+
+    // ブランド名を取得
+    const brandName = targetLi.dataset.brand;
+    targetLi.parentNode.dataset.show = brandName;
+  })
+}

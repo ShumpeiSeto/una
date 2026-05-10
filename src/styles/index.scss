@@ -173,7 +173,7 @@ main {
   }
 
   &__item {
-    height: 45rem;
+    height: 49rem;
     img {
       height: 100%;
     }
@@ -204,7 +204,6 @@ main {
 }
 .product-card {
     width: 100%;
-    height: 25rem;
     a {
       display: block;
     }
@@ -278,7 +277,7 @@ main {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    align-items: center;
+    align-items: flex-end;
     padding: 1rem 0;
     border-bottom: 2px solid variables.$color-border;
   }
@@ -318,17 +317,79 @@ main {
 
   &__brands {
     margin: 3rem 0;
-    &-window {
-      width: 100%;
+
+    &-wrapper {
+      position: relative;
+      padding: 0;
+      &:has(.new-arrival__brands-list[data-show="all"])   .new-arrival__items-list[data-category="by"],
+      &:has(.new-arrival__brands-list[data-show="ua"])   .new-arrival__items-list[data-category="ua"],
+      &:has(.new-arrival__brands-list[data-show="by"])   .new-arrival__items-list[data-category="by"],
+      &:has(.new-arrival__brands-list[data-show="gl"])   .new-arrival__items-list[data-category="gl"], 
+      &:has(.new-arrival__brands-list[data-show="dr"])   .new-arrival__items-list[data-category="dr"],
+      &:has(.new-arrival__brands-list[data-show="bl"])   .new-arrival__items-list[data-category="bl"],
+      &:has(.new-arrival__brands-list[data-show="hby"])   .new-arrival__items-list[data-category="hby"],
+      &:has(.new-arrival__brands-list[data-show="co"])   .new-arrival__items-list[data-category="co"],
+      &:has(.new-arrival__brands-list[data-show="as"])   .new-arrival__items-list[data-category="as"] {
+        display: flex;
+      }
+    }
+    &-btn {
+      position: absolute;
+      top: 2%;
+      // transform: translateY(-50%);
+      width: 4rem;
       height: 4rem;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-top: .2rem solid #333;
+        border-left: .2rem solid #333;
+      }
+      &--left {
+        left: -2rem;
+        &.inactive-btn {
+          display: none;
+        }
+        &::after {
+          transform: rotate(-45deg);
+        }
+      }
+      &--right {
+        right: -4rem;
+        &.inactive-btn {
+          display: none;
+        }
+        &::after {
+          transform: rotate(135deg);
+        }
+      }
+    }
+
+    &-window {
+      // position: relative;
+      // height: 7rem;
+      overflow-x: auto;
+      margin: 0 auto;
+      border-bottom: 1px solid variables.$color-border;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
     &-container {
       width: max-content;
+      transition: all 0.5s ease;
     }
     &-list {
       display: flex;
       gap: 2rem;
-      border-bottom: 2px solid variables.$color-border;
+      // border-bottom: 2px solid variables.$color-border;
+      align-items: flex-end;
+      margin-bottom: -1px;
     }
     &-item {
       height: 5rem;
@@ -363,20 +424,51 @@ main {
         &::after {
           content: '';
           position: absolute;
-          padding-bottom: 2rem;
+          left: 0;
+          bottom: 0px;
           width: 100%;
-          height: 100%;
-          bottom: -2px;
-          border-bottom: 2px solid #333;
+          height: 2px;
+          background-color: #333;
         }
       }
     }
-
-
-
-    
   }
+
+  &__items {
+
+    &-container {
+      padding: 6px 0;
+      width: 90rem;
+    }
+
+    &-list {
+      display: none;
+      gap: .2rem;
+      a img {
+        object-fit: cover;
+        width: 18rem;
+      }
+
+      &.non-item {
+        justify-content: center;
+        font-size: 1.7rem;
+      }
+    }
+  }
+  
 }
+
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="all"])   .new-arrival__items-list[data-category="by"],
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="ua"])   .new-arrival__items-list[data-category="ua"],
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="by"])   .new-arrival__items-list[data-category="by"],
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="gl"])   .new-arrival__items-list[data-category="gl"], 
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="dr"])   .new-arrival__items-list[data-category="dr"],
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="bl"])   .new-arrival__items-list[data-category="bl"],
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="hby"])   .new-arrival__items-list[data-category="hby"],
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="co"])   .new-arrival__items-list[data-category="co"],
+  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="as"])   .new-arrival__items-list[data-category="as"] {
+  //   display: flex;
+  // }
 
 
 
