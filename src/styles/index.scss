@@ -458,19 +458,109 @@ main {
   
 }
 
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="all"])   .new-arrival__items-list[data-category="by"],
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="ua"])   .new-arrival__items-list[data-category="ua"],
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="by"])   .new-arrival__items-list[data-category="by"],
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="gl"])   .new-arrival__items-list[data-category="gl"], 
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="dr"])   .new-arrival__items-list[data-category="dr"],
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="bl"])   .new-arrival__items-list[data-category="bl"],
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="hby"])   .new-arrival__items-list[data-category="hby"],
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="co"])   .new-arrival__items-list[data-category="co"],
-  // .new-arrival__brands-wrapper:has(.new-arrival__brands-list[data-show="as"])   .new-arrival__items-list[data-category="as"] {
-  //   display: flex;
-  // }
 
+// カテゴリー
 
+.category {
+  padding: 5rem 0;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: .5rem;
+    margin: 5rem auto 5rem;
+  }
+
+  &__item  {
+    width: 18rem;
+    height: 7rem;
+    position: relative;
+    a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
+
+    &::after {
+      content : "";
+      position: absolute;
+      top: 49%;
+      right: 2rem;
+      width: .5rem;
+      height: .5rem;
+      border-top: .1rem solid #333;
+      border-left: .1rem solid #333;
+      transform: rotate(135deg);
+    }
+  }
+  &__item-logo {
+    width: 3rem;
+  }
+  &__item-img {
+    object-fit: cover;
+  }
+
+  &__item-desc {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    span {
+      // display: block;
+      font-size: 1.2rem;
+      margin-left: .5rem;
+      padding: .5rem 1rem;
+    }
+
+  }
+}
+
+// メイン・スタイリング
+.styling {
+  padding: 5rem 0;
+
+  &__sex-list {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    align-items: flex-end;
+    padding: 1rem 0;
+    border-bottom: .2rem solid variables.$color-border;
+  }
+  &__sex-item {
+    height: 3rem;
+    width: 12rem;
+    position: relative;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      font-weight: 300;
+      width: 100%;
+      height: 100%;
+    }
+    &--active {
+      a {
+        color: color.adjust(variables.$color-text-main, $lightness: 10%);
+        font-weight: bold;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1.2rem;
+        left: 0;
+        width: 100%;
+        height: .2rem;
+        background-color: color.adjust(variables.$color-border, $lightness: -50%);
+      }
+    }
+  }
+}
 
 
 // フッター
