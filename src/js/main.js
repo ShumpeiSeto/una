@@ -123,3 +123,16 @@ if (brandList) {
     targetLi.parentNode.dataset.show = brandName;
   })
 }
+
+// スタイル選択ボタン
+const styleSexList = document.querySelector('.styling__sex-list');
+
+if (styleSexList) {
+  styleSexList.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetLi = e.target.closest('li');
+    if (!targetLi) return;
+    [...styleSexList.children].forEach(item => item.classList.remove('styling__sex-item--active'));
+    targetLi.classList.add('styling__sex-item--active');
+  })
+}
