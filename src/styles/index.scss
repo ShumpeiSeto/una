@@ -276,7 +276,7 @@ main {
   &__tab-list {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    // gap: 3rem;
     align-items: flex-end;
     padding: 1rem 0;
     border-bottom: 2px solid variables.$color-border;
@@ -284,7 +284,8 @@ main {
 
   &__tab-item {
     height: 3rem;
-    width: 12rem;
+    padding: 1rem 5rem;
+    // width: 12rem;
     position: relative;
 
     a {
@@ -521,17 +522,30 @@ main {
 .styling {
   padding: 5rem 0;
 
+  &__gallery-list {
+    display: none !important;
+  }
+
+  &__sex-tab {
+    margin: 3rem auto;
+
+    &:has(.styling__sex-list[data-show="men"]) ~ .styling__gallery .styling__gallery-list.men,
+    &:has(.styling__sex-list[data-show="women"]) ~ .styling__gallery .styling__gallery-list.women {
+      display: grid !important;
+    }
+
+  }
   &__sex-list {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    // gap: 3rem;
     align-items: flex-end;
     padding: 1rem 0;
     border-bottom: .2rem solid variables.$color-border;
   }
   &__sex-item {
     height: 3rem;
-    width: 12rem;
+    padding: 1rem 5rem;
     position: relative;
 
     a {
@@ -559,6 +573,71 @@ main {
         background-color: color.adjust(variables.$color-border, $lightness: -50%);
       }
     }
+  }
+
+  &__select-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+  }
+  &__select-item {
+    padding: .5rem 1rem;
+    color: color.adjust(variables.$color-border, $lightness: -20%);
+    border: 1px solid color.adjust(variables.$color-border, $lightness: -10%);
+  }
+
+  // スタイリングギャラリー
+  &__gallery {
+    width: 100%;
+    padding: 3rem 0;
+
+    &-list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+    }
+    &-item {
+      height: 100%;
+      width: 100%;
+    }
+    &-img {
+      width: 22.8rem;
+      img {
+        width: 100%;
+      }
+    }
+    &-desc {
+      display: flex;
+      flex-direction: row;
+      margin: 2rem 1rem 0 0;
+    }
+  }
+  &__staff-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__staff-img {
+    width: 100%;
+    object-fit: cover;
+  }
+  // スタッフ情報
+  &__staff-info {
+    margin-left: 1rem;
+  }
+  &__staff-name {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  &__staff-brand {
+    font-size: 1.3rem;
+    margin-bottom: 1.1rem;
+  }
+  &__staff-height {
+    font-size: 1.1rem;
   }
 }
 

@@ -126,6 +126,7 @@ if (brandList) {
 
 // スタイル選択ボタン
 const styleSexList = document.querySelector('.styling__sex-list');
+const stylingGallery = document.querySelector('.styling__gallery');
 
 if (styleSexList) {
   styleSexList.addEventListener('click', (e) => {
@@ -134,5 +135,11 @@ if (styleSexList) {
     if (!targetLi) return;
     [...styleSexList.children].forEach(item => item.classList.remove('styling__sex-item--active'));
     targetLi.classList.add('styling__sex-item--active');
+
+
+    // [...stylingGallery.children].forEach(item => item.style.display="none");
+    const sexName = targetLi.dataset.category;
+    styleSexList.dataset.show = sexName;
+
   })
 }
